@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Map from './components/map/index';
+import Landing from './Pages/Landing';
 
 class App extends Component {
   render() {
     return (
       <div>
-        This is App.
-        <Map />
+        <Landing />
+
       </div>
     );
   }
