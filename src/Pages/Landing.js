@@ -10,7 +10,7 @@ class Landing extends Component {
     return (
       <div>
         <Header />
-        <div className={"map-container "}>
+        <div className={"map-container"}>
           <Map />
 
           <Listing />

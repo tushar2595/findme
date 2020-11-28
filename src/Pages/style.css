@@ -4,3 +4,26 @@ display: flex;
 flex-direction: row;
 background-color: #ececec;
 }
+.home-page-container
+{
+display: flex;
+justify-content: center;
+width: 100%;
+background-color: #f9fafc;
+height: 100vh;
+}
+.home-page-login-container
+{
+display: flex;
+justify-content: center;
+height: 90%;
+background-color: #fff;
+width: 25%;
+
+}
+@media only screen and (max-width: 600px) {
+  .home-page-login-container
+  {
+    width: 100%;
+  }
+}

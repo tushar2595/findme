@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Landing from './Pages/Landing';
+import AppRoutes from './routes/index';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Landing />
-
+        <AppRoutes />
       </div>
     );
   }
