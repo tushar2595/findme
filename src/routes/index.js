@@ -5,8 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Landing from '../pages/Landing';
-import HomePage from '../pages/HomePage';
+import Landing from '../Pages/Landing.js';
+import HomePage from '../Pages/HomePage.js';
 
 
 class AppRoutes extends Component {
@@ -17,7 +17,6 @@ class AppRoutes extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/landing" component={Landing} />
-
           </Switch>
         </Router>
       </div>

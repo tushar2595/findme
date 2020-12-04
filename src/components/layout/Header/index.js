@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Navbar, NavDropdown, Nav, Form, FormControl } from 'react-bootstrap';
 import "./style.css";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div>
       <Navbar sticky="top" fixed="top" bg="light" expand="lg" className={"shadow"} variant="dark" bg="dark">

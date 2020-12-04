@@ -52,3 +52,12 @@ color: #fff !important;
   font-size: small;
 
 }
+.login-input
+{
+  background-color: #FAFBFC !important;
+}
+.validations-errors
+{
+font-size: small;
+color: red;
+}

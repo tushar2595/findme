@@ -12,9 +12,7 @@ class Landing extends Component {
         <Header />
         <div className={"map-container"}>
           <Map />
-
           <Listing />
-
         </div>
         <Footer />
       </div>
