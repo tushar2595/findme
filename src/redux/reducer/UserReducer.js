@@ -1,37 +1,27 @@
-import {
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE
-} from './types.js';
+import { userConstants } from '../../Constants/index';
 
-const initialState = {
-  loading: false,
-  users: {},
-  error: ''
-}
+let user = JSON.parse(localStorage.getItem('user'));
+const initialState = user ? { loggedIn: true, user } : {};
 
-const AuthReducer = (state = initialState, action) => {
+export function authentication(state = initialState, action) {
   switch (action.type) {
-    case FETCH_USERS_REQUEST:
+    case userConstants.LOGIN_REQUEST:
       return {
-        ...state,
-        loading: true
-      }
-    case FETCH_USERS_SUCCESS:
+        loggingIn: true,
+        user: action.user
+      };
+    case userConstants.LOGIN_SUCCESS:
       return {
-        ...state,
-        loading: false,
-        users: action.payload,
-        error: ''
-      }
-    case FETCH_USERS_FAILURE:
+        loggedIn: true,
+        user: action.user
+      };
+    case userConstants.LOGIN_FAILURE:
       return {
-        loading: false,
-        users: {},
-        error: action.payload
-      }
-    default: return state
+        loggedIn:false
+      };
+    case userConstants.LOGOUT:
+      return {};
+    default:
+      return state
   }
 }
-
-export default AuthReducer;

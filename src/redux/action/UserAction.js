@@ -1,62 +1,30 @@
-import axios from 'axios'
-import {
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE
-} from './types'
-export const fetchUsers = (param) => {
-  return new Promise(dispatch => {
-    dispatch(fetchUsersRequest())
-    let baseUrl = "https://reqres.in/api/login";
-    axios
-      .post(baseUrl, param)
-      .then(function (response) {
-      //  console.log(response);
-        dispatch(fetchUsersSuccess(response.data))
-        //dispatchAction(deleteStateData(response.data));
-      //  resolve(response);
-      })
-      .catch(function (error) {
-        //reject(error);
-        dispatch(fetchUsersFailure())
-      });
-  });
+import { userConstants } from '../../Constants/index';
+import { userService } from '../../Service/index';
+
+
+export const userActions = {
+    login,
+
 };
-// export const fetchUsers = (param) => {
-//   console.log(param,'ddddd');
-//   return new Promise (dispatch => {
-//     dispatch(fetchUsersRequest())
-//     axios
-//       .post('https://reqres.in/api/login',param)
-//       .then(response => {
-//         console.log(response),
-//         // response.data is the users
-//         dispatch(fetchUsersSuccess(response.data))
-//       })
-//       .catch(error => {
-//         console.log(error);
-//         // error.message is the error message
-//         dispatch(fetchUsersFailure(error.message))
-//       })
-//   }
-//   )}
 
-export const fetchUsersRequest = () => {
-  return {
-    type: FETCH_USERS_REQUEST
-  }
+function login(user) {
+    return dispatch => {
+        dispatch(request(user));
+
+        userService.login(user)
+            .then(
+              user =>  {     
+                dispatch(success(user));
+                },
+                error => {
+                    dispatch(failure(error));
+                    
+                }
+            );
+    };
+
+    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
+    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
 
-export const fetchUsersSuccess = users => {
-  return {
-    type: FETCH_USERS_SUCCESS,
-    payload: users
-  }
-}
-
-export const fetchUsersFailure = error => {
-  return {
-    type: FETCH_USERS_FAILURE,
-    payload: error
-  }
-}

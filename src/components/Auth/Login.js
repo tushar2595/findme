@@ -9,7 +9,8 @@ import { useFormik, validateYupSchema } from "formik";
 import * as Yup from "yup";
 import apiManager from "../../apiManager/index";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/action/UserAction";
+import {login} from '../../Service/index'
+
 
 const Login = () => {
   const logintoapp = (values) => {
@@ -18,7 +19,7 @@ const Login = () => {
       "email":values.email,
       "password":values.password
     }
-    fetchUsers(data);
+ login(data); 
   };
   const formik = useFormik({
     initialValues: {
@@ -31,7 +32,7 @@ const Login = () => {
         .email("Invalid email format.")
         .required("Required"),
       password: Yup.string()
-        .min(8, "Minimum 8 characters")
+        .min(6, "Minimum 6 characters")
         .required("Required"),
     }),
 
@@ -105,10 +106,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: (data) => dispatch(fetchUsers(data)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+export default connect(mapStateToProps)(Login);
